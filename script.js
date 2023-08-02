@@ -2,18 +2,8 @@
 
 
 window.addEventListener("load", function() {
-// calling form submission fucntion for validation
-
-
-//formSubmission();
-
-// setting form variable for form
-let form = document.querySelector("testForm")
 
 // create objects- for user input box on form submission
-
-// call form submission function
-
 const pilot = document.getElementById('pilotName')
 const coPilot = document.querySelector("input[name=copilotName]")
 const fuelLevel = document.querySelector("input[name=fuelLevel]")
@@ -29,12 +19,10 @@ const fuelStatus = document.getElementById('fuelStatus')
 const cargoStatus = document.getElementById('cargoStatus')
 const faultyItems = document.getElementById('faultyItems')
 
-//
-const launchStatusCheckList = document.getElementById("launchStatus")
-
+//did click listner for submitt button
 submitButton.addEventListener("click", function(event){
 
-// created isSubmitted to equal forsubmission function
+// created isSubmitted to equal forsubmission function with passed in parameters
 const isSubmitted = formSubmission(window.document, faultyItems.value, pilot.value, coPilot.value, fuelLevel.value, cargoMass.value);
 console.log(isSubmitted)
 
@@ -43,18 +31,18 @@ event.preventDefault()
 
 if(isSubmitted) {
 
-    // pilot status event listner 
     //pilot inner html equal to template literal
         pilotStatus.innerHTML = ` Pilot ${pilot.value} is ready for launch`
         console.log(pilotStatus)
+        pilotStatus.style.visibility = 'visible'
     
        
        // co-piolt event listener
        coPilotStatus.innerHTML = `Co-Pilot ${coPilot.value} is ready for launch`
        console.log(coPilotStatus)
+       coPilotStatus.style.visibility = 'visible'
       
        
-       // fuel level event listener
    
        // did isSubmitted so launch status can show if submission is valid, so if field is empty then t wont show an fuel level is under 10000
        if(isSubmitted & fuelLevel.value < 10000) {
@@ -92,11 +80,13 @@ event.preventDefault()
 // use const isSubmitted varibale for if conditional to run code below
 
 
-
+// setting variable to eqa=ual my fecth function
 let planetsReturned = myFetch()
+/// listed planets variable
 let listedPlanets;
 // Set listedPlanetsResponse equal to the value returned by calling myFetch()
 let listedPlanetsResponse = planetsReturned
+// function already there
 listedPlanetsResponse.then(function (result) {
     listedPlanets = result;
     console.log(listedPlanets);
@@ -109,7 +99,7 @@ listedPlanetsResponse.then(function (result) {
     let randomPlanet = listedPlanets[planetIndex]
     console.log(randomPlanet)
     // passed listPlanets into pick Planet
-    pickPlanet(listedPlanets)
+    //pickPlanet(listedPlanets)
     
     // calling destioattio info with parametes passed in
     addDestinationInfo(window.document, randomPlanet.name, randomPlanet.diameter, randomPlanet.star, randomPlanet.distance, randomPlanet.moons, randomPlanet.image)
