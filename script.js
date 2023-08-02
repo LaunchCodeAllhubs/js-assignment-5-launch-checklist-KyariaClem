@@ -56,7 +56,7 @@ if(isSubmitted) {
            } else if (fuelLevel.value >= 10000 || cargoMass.value === null) {
            launchStatus.innerHTML = "Shuttle is ready for launch"
            launchStatus.style.color = "#419F6A";
-           faultyItems.style.visibility = 'hidden'
+           faultyItems.style.visibility = 'visible'
            } else {
            
            }
@@ -67,8 +67,9 @@ if(isSubmitted) {
            launchStatus.innerHTML = "Shuttle Not Ready for Launch"
            launchStatus.style.color = "rgb(199, 37, 78)";
        } else if (cargoMass.value === "") {
-           
            faultyItems.style.visibility = 'hidden' 
+       } else if(cargoMass.value <= 10000 ) {
+        faultyItems.style.visibility = 'visible'
        }
 
 event.preventDefault()
